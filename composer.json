@@ -1,0 +1,34 @@
+{
+    "name": "pablorsk/php-bank-accounts",
+    "type": "library",
+    "description": "PHP Bank Accounts validator, info and more...",
+    "keywords": ["cbu", "clabe", "banks"],
+    "homepage": "https://github.com/pablorsk/php-bank-accounts",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bank Accounts Validator"
+        },
+        {
+            "name": "Pablo Reyes",
+            "email": "pablo@srtk.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4"
+    },
+    "require-dev": {
+        "reyesoft/ci": "*",
+        "phpunit/phpunit": "9.5.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "BankAccounts\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    }
+}
