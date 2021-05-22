@@ -11,9 +11,9 @@ composer require reyesoft/php-bank-account
 ## Example
 
 ```php
-use BankAccounts\Ar\ArBankAccount;
+use BankAccounts\Ar\VeBankAccount;
 
-$valid = (new ArBankAccount('2850396540094708965758');
+$valid = (new VeBankAccount('2850396540094708965758');
 ```
 
 ## Available countries

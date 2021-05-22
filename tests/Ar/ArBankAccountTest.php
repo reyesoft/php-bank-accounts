@@ -12,8 +12,6 @@ use BankAccounts\Ar\ArBankAccount;
 use PHPUnit\Framework\TestCase;
 
 /**
- * This class doesn't do much yet..
- *
  * @author Pablo Gabriel Reyes
  *
  * @see https://pabloreyes.com.ar/ Blog
