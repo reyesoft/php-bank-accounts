@@ -19,8 +19,6 @@ use BankAccounts\BankAccountInterface;
  * @see https://pabloreyes.com.ar/ Blog
  * @see https://github.com/pablorsk/cbu-validator-php CBU validator on GitHub
  *
- * @version 1.0.0
- *
  * Basado en Toba, de https://repositorio.siu.edu.ar/
  */
 class ArBankAccount extends BankAccount implements BankAccountInterface

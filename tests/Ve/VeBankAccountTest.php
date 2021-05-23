@@ -14,11 +14,6 @@ use PHPUnit\Framework\TestCase;
 /**
  * @author Pablo Gabriel Reyes
  *
- * @see https://pabloreyes.com.ar/ Blog
- * @see https://github.com/pablorsk/cbu-validator-php CBU validator on GitHub
- *
- * @version 1.0.0
- *
  * @covers \BankAccounts\Ve\VeBankAccount
  *
  * @internal

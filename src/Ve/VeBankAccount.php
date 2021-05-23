@@ -12,16 +12,9 @@ use BankAccounts\BankAccount;
 use BankAccounts\BankAccountInterface;
 
 /**
- * Permite validar los CBU (Clave Bancaria Uniforme), Argentina.
- *
  * @author Pablo Gabriel Reyes
  *
  * @see https://pabloreyes.com.ar/ Blog
- * @see https://github.com/pablorsk/cbu-validator-php CBU validator on GitHub
- *
- * @version 1.0.0
- *
- * Basado en Toba, de https://repositorio.siu.edu.ar/
  */
 class VeBankAccount extends BankAccount implements BankAccountInterface
 {
