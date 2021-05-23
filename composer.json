@@ -1,5 +1,5 @@
 {
-    "name": "pablorsk/php-bank-accounts",
+    "name": "reyesoft/bank-accounts",
     "type": "library",
     "description": "PHP Bank Accounts validator, info and more...",
     "keywords": ["cbu", "clabe", "banks"],
