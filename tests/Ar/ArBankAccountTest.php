@@ -26,15 +26,24 @@ final class ArBankAccountTest extends TestCase
     public function testIsValid()
     {
         static::assertFalse((new ArBankAccount('111111111'))->isValid());
-        static::assertFalse((new ArBankAccount('AAAAA0000'))->isValid());
+        static::assertFalse((new ArBankAccount('alias'))->isValid());
         static::assertFalse((new ArBankAccount('0720262188000036092117'))->isValid());
         static::assertTrue((new ArBankAccount('2850396540094708965758'))->isValid());
         static::assertTrue((new ArBankAccount('0720262188000036092118'))->isValid());
+        static::assertTrue((new ArBankAccount('alias.mp'))->isValid());
     }
 
     public function testBankName()
     {
+        static::assertSame('MercadoPago', (new ArBankAccount('alias.mp'))->getBankName());
+        static::assertSame('Ualá', (new ArBankAccount('alias.uala'))->getBankName());
         static::assertSame('Banco Santander Rio S.A.', (new ArBankAccount('0720321188000033530000'))->getBankName());
         static::assertNull((new ArBankAccount('0000321188000033530718'))->getBankName());
+    }
+
+    public function testGetAccountTitle()
+    {
+        static::assertSame('Alias', (new ArBankAccount('alias.mp'))->getAccountTile());
+        static::assertSame('CBU/CVU', (new ArBankAccount('0720321188000033530000'))->getAccountTile());
     }
 }

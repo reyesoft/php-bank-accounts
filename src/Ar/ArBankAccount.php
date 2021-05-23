@@ -28,10 +28,37 @@ class ArBankAccount extends BankAccount implements BankAccountInterface
         $this->bank_account_number = $cbu;
     }
 
+    public function getAccountTile(): string
+    {
+        return $this->isAlias() ? 'Alias' : 'CBU/CVU';
+    }
+
+    private function isAlias(): bool
+    {
+        return !preg_match('/^[0-9]+$/', $this->bank_account_number);
+    }
+
+    public function isValid(): bool
+    {
+        if (preg_match('/^[0-9]+$/', $this->bank_account_number) && !$this->isValidCbu()) {
+            return false;
+        }
+
+        return $this->isValidAlias();
+    }
+
+    /**
+     *  alias, http://www.bcra.gob.ar/Pdfs/comytexord/B11478.pdf.
+     */
+    public function isValidAlias()
+    {
+        return preg_match('/^[A-Za-z.\-0-9]{6,22}$/', $this->bank_account_number) === 1;
+    }
+
     /**
      * By Banco Central Argentino (http://www.bcra.gov.ar/pdfs/snp/SNP3002.pdf).
      */
-    public function isValid(): bool
+    public function isValidCbu()
     {
         // only 22 numbers
         if (!preg_match('/[0-9]{22}/', $this->bank_account_number)) {
@@ -78,6 +105,14 @@ class ArBankAccount extends BankAccount implements BankAccountInterface
 
     public function getBankName(): ?string
     {
+        if (substr($this->bank_account_number, -5) === '.uala') {
+            return 'Ualá';
+        }
+
+        if (substr($this->bank_account_number, -3) === '.mp') {
+            return 'MercadoPago';
+        }
+
         $id = self::getBankId();
 
         return BankNamesRepository::NAMES[$id] ?? null;

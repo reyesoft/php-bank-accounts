@@ -12,6 +12,8 @@ interface BankAccountInterface
 {
     public function __construct(string $bank_account_number);
 
+    public function getAccountTile(): string;
+
     public function getBankAccountNumber(): string;
 
     public function isValid(): bool;

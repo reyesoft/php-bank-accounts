@@ -23,6 +23,11 @@ class VeBankAccount extends BankAccount implements BankAccountInterface
         $this->bank_account_number = $cbu;
     }
 
+    public function getAccountTile(): string
+    {
+        return 'Cuenta';
+    }
+
     /**
      * By Banco Central Venezolano.
      */
