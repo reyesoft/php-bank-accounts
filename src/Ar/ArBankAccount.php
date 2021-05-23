@@ -28,6 +28,16 @@ class ArBankAccount extends BankAccount implements BankAccountInterface
         $this->bank_account_number = $cbu;
     }
 
+    public function getAccountTile(): string
+    {
+        return $this->isAlias() ? 'Alias' : 'CBU/CVU';
+    }
+
+    private function isAlias(): bool
+    {
+        return !preg_match('/^[0-9]+$/', $this->bank_account_number);
+    }
+
     /**
      * By Banco Central Argentino (http://www.bcra.gov.ar/pdfs/snp/SNP3002.pdf).
      */
@@ -78,6 +88,14 @@ class ArBankAccount extends BankAccount implements BankAccountInterface
 
     public function getBankName(): ?string
     {
+        if (substr($this->bank_account_number, -5) === '.uala') {
+            return 'Ualá';
+        }
+
+        if (substr($this->bank_account_number, -3) === '.mp') {
+            return 'MercadoPago';
+        }
+
         $id = self::getBankId();
 
         return BankNamesRepository::NAMES[$id] ?? null;

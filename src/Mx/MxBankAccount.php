@@ -23,6 +23,11 @@ class MxBankAccount extends BankAccount implements BankAccountInterface
         $this->bank_account_number = $clabe;
     }
 
+    public function getAccountTile(): string
+    {
+        return 'CLABE';
+    }
+
     /**
      * @author Matías Ahumada
      */
