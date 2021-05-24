@@ -1,19 +1,29 @@
-# Bank Accounts Validator
+# Bank Accounts validator, names and more...
 
 ## Installation
 
 Vía Composer
 
 ```bash
-composer require reyesoft/php-bank-account
+composer require reyesoft/bank-account
 ```
 
 ## Example
 
 ```php
-use BankAccounts\Ar\VeBankAccount;
+use BankAccounts\Ar\ArBankAccount;
+use BankAccounts\Mx\MxBankAccount;
 
-$valid = (new VeBankAccount('2850396540094708965758');
+$mx_bank = new MxBankAccount('072580010312850172');
+$mx_bank->isValid(); // true
+echo $mx_bank->getBankName(); // Banorte
+echo $mx_bank->testGetInternalBankAccountNumber(); // 1031285017
+echo $mx_bank->getAccountTile(); // CLABE
+
+echo (new ArBankAccount('pablorsk.mp'))
+    ->getAccountTile(); // Alias
+echo (new ArBankAccount('0720321188000033530000'))
+    ->getAccountTile(); // CBU/CVU
 ```
 
 ## Available countries
