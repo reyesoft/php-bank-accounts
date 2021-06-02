@@ -33,6 +33,8 @@ final class MxBankAccountTest extends TestCase
     {
         static::assertSame('IXE', (new MxBankAccount('032180000118359719'))->getBankName());
         static::assertSame('BANORTE', (new MxBankAccount('072580010312850172'))->getBankName());
+        static::assertSame('SANTANDER', (new MxBankAccount('014420570119422387'))->getBankName());
+        static::assertSame('BBVA BANCOMER', (new MxBankAccount('012180015526107762'))->getBankName());
         static::assertNull((new MxBankAccount('00050194697194012294'))->getBankName());
     }
 
