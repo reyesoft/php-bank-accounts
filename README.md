@@ -32,6 +32,7 @@ Based on [ISO alpha 2 characters](https://www.nationsonline.org/oneworld/country
 * Argentina (AR)
 * México (MX)
 * Venezuela (VE)
+* Colombia (CO)
 
 ## Development
 
