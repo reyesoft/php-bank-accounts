@@ -22,6 +22,7 @@ final class MxBankAccountTest extends TestCase
 {
     public function testIsValid()
     {
+        static::assertTrue((new MxBankAccount('072580010990912720'))->isValid());
         static::assertFalse((new MxBankAccount(''))->isValid());
         static::assertFalse((new MxBankAccount('1231243457656434324325'))->isValid());
         static::assertFalse((new MxBankAccount('123124345765643432'))->isValid());
@@ -40,7 +41,7 @@ final class MxBankAccountTest extends TestCase
 
     public function testGetInternalBankAccountNumber()
     {
-        static::assertSame('1031285017', (new MxBankAccount('072580010312850172'))->getInternalBankAccountNumber());
-        static::assertNull((new MxBankAccount('032180000118359719'))->getInternalBankAccountNumber());
+        static::assertSame('01031285017', (new MxBankAccount('072580010312850172'))->getInternalBankAccountNumber());
+        static::assertNull((new MxBankAccount('123'))->getInternalBankAccountNumber());
     }
 }

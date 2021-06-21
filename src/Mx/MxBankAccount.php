@@ -12,9 +12,7 @@ use BankAccounts\BankAccount;
 use BankAccounts\BankAccountInterface;
 
 /**
- * @author Pablo Gabriel Reyes
- *
- * @see https://pabloreyes.com.ar/ Blog
+ * @see https://bank.codes/mexico-clabe-checker/
  */
 class MxBankAccount extends BankAccount implements BankAccountInterface
 {
@@ -47,6 +45,7 @@ class MxBankAccount extends BankAccount implements BankAccountInterface
         }
 
         $controlDigit = $MODULE_TEN - ($accumulator % $MODULE_TEN);
+        $controlDigit = $controlDigit === 10 ? 0 : $controlDigit;
 
         return end($clabeChars) === (string) $controlDigit;
     }
@@ -65,11 +64,10 @@ class MxBankAccount extends BankAccount implements BankAccountInterface
 
     public function getInternalBankAccountNumber(): ?string
     {
-        switch ($this->getBankId()) {
-            case '072': // banorte
-                return substr($this->getBankAccountNumber(), 7, 10);
+        if (strlen($this->getBankAccountNumber()) < (17)) {
+            return null;
         }
 
-        return null;
+        return substr($this->getBankAccountNumber(), 6, 11);
     }
 }
