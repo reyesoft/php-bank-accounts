@@ -31,11 +31,11 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
 
-    - name: CI
-      run: composer ci
+    # - name: CI
+    #   run: composer ci
 
-    - name: PHPStan
-      run: composer phpstan
+    # - name: PHPStan
+    #   run: composer phpstan
 
     - name: Run tests
       run: composer coverage
