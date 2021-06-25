@@ -19,8 +19,8 @@
     },
     "require-dev": {
         "reyesoft/ci": "*",
-        "phpunit/phpunit": "9.5.4",
-        "codedungeon/phpunit-result-printer": "0.28.0"
+        "codedungeon/phpunit-result-printer": "0.28.0",
+        "phpunit/phpunit": "9.5.4"
     },
     "autoload": {
         "psr-4": {
