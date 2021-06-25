@@ -38,4 +38,9 @@ final class VeBankAccountTest extends TestCase
         static::assertSame('MERCANTIL', (new VeBankAccount('01050194697194012294'))->getBankName());
         static::assertNull((new VeBankAccount('00050194697194012294'))->getBankName());
     }
+
+    public function testAccountTile()
+    {
+        static::assertSame('Cuenta', (new VeBankAccount('01050194697194012294'))->getAccountTile());
+    }
 }

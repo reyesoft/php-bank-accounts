@@ -44,4 +44,9 @@ final class MxBankAccountTest extends TestCase
         static::assertSame('01031285017', (new MxBankAccount('072580010312850172'))->getInternalBankAccountNumber());
         static::assertNull((new MxBankAccount('123'))->getInternalBankAccountNumber());
     }
+
+    public function testAccountTile()
+    {
+        static::assertSame('CLABE', (new MxBankAccount('01050194697194012294'))->getAccountTile());
+    }
 }

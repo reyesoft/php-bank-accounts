@@ -19,6 +19,7 @@
     },
     "require-dev": {
         "reyesoft/ci": "*",
+        "codedungeon/phpunit-result-printer": "0.28.0",
         "phpunit/phpunit": "9.5.4"
     },
     "autoload": {
@@ -32,6 +33,22 @@
         }
     },
     "scripts": {
+        "ci": "bash vendor/reyesoft/ci/parallel.bash -s \"composer ci-double-spaces\" \"composer ci-php-cs-fixer\"",
+        "ci-double-spaces": [
+            "sh vendor/reyesoft/ci/tools/find-double-spaces.sh src",
+            "sh vendor/reyesoft/ci/tools/find-double-spaces.sh tests"
+        ],
+        "ci-php-cs-fixer": "sh vendor/reyesoft/ci/php/scripts/php-cs-fixer.sh",
+        "phpstan": [
+            "@phpstan-src",
+            "@phpstan-tests"
+        ],
+        "phpstan-src": "./vendor/bin/phpstan analyse -l 7 -c resources/rules/phpstan.src.neon src",
+        "phpstan-tests": "./vendor/bin/phpstan analyse -l 7 -c resources/rules/phpstan.tests.neon tests",
+        "coverage": [
+            "phpdbg -d memory_limit=-1 -qrr ./vendor/bin/phpunit tests/",
+            "php ./vendor/reyesoft/ci/tools/coverage-checker.php ./bootstrap/cache/clover.xml 95"
+        ],
         "test": [
             "./vendor/bin/phpunit -d memory_limit=-1 tests/"
         ]
