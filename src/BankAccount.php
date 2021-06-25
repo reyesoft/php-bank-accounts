@@ -8,6 +8,7 @@
 
 namespace BankAccounts;
 
+/** @codeCoverageIgnore */
 abstract class BankAccount implements BankAccountInterface
 {
     /**

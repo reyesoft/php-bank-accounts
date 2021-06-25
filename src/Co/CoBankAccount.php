@@ -37,16 +37,19 @@ class CoBankAccount extends BankAccount implements BankAccountInterface
         return true;
     }
 
+    /** @codeCoverageIgnore */
     public function getBankId(): ?string
     {
         return '';
     }
 
+    /** @codeCoverageIgnore */
     public function getBankName(): ?string
     {
         return null;
     }
 
+    /** @codeCoverageIgnore */
     public function getInternalBankAccountNumber(): ?string
     {
         return null;

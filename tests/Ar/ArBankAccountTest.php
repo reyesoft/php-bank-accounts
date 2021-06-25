@@ -28,6 +28,7 @@ final class ArBankAccountTest extends TestCase
         static::assertFalse((new ArBankAccount('111111111'))->isValid());
         static::assertFalse((new ArBankAccount('alias'))->isValid());
         static::assertFalse((new ArBankAccount('0720262188000036092117'))->isValid());
+        static::assertFalse((new ArBankAccount('2850396540094708965756'))->isValid());
         static::assertTrue((new ArBankAccount('2850396540094708965758'))->isValid());
         static::assertTrue((new ArBankAccount('0720262188000036092118'))->isValid());
         static::assertTrue((new ArBankAccount('alias.mp'))->isValid());

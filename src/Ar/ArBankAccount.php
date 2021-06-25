@@ -66,7 +66,9 @@ class ArBankAccount extends BankAccount implements BankAccountInterface
         }
         $arr = str_split($this->bank_account_number);
         if ($arr[7] != self::getDigitoVerificador($arr, 0, 6)) {
+            // @codeCoverageIgnoreStart
             return false;
+            // @codeCoverageIgnoreEnd
         }
         if ($arr[21] != self::getDigitoVerificador($arr, 8, 20)) {
             return false;
@@ -118,6 +120,7 @@ class ArBankAccount extends BankAccount implements BankAccountInterface
         return BankNamesRepository::NAMES[$id] ?? null;
     }
 
+    /** @codeCoverageIgnore */
     public function getInternalBankAccountNumber(): ?string
     {
         return null;

@@ -73,9 +73,11 @@ class VeBankAccount extends BankAccount implements BankAccountInterface
         }
         $resultado = (int) (11 - ($s % 11));
         if ($resultado == 10) {
+            /** @codeCoverageIgnoreStart */
             $resultado = 0;
         } elseif ($resultado == 11) {
             $resultado = 1;
+            // @codeCoverageIgnoreEnd
         }
 
         return $resultado;
@@ -93,6 +95,7 @@ class VeBankAccount extends BankAccount implements BankAccountInterface
         return BankNamesRepository::NAMES[$id] ?? null;
     }
 
+    /** @codeCoverageIgnore */
     public function getInternalBankAccountNumber(): ?string
     {
         return null;
