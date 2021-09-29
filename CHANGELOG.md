@@ -7,8 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.2] - 2021-09-29
+
 ### Added
 - Github actions added
+
+### Fixed
+- Get mexican account number via CLABE.
 
 ## [1.1.1] - 2021-06-21
 
