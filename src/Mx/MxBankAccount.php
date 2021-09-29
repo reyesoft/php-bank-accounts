@@ -68,6 +68,6 @@ class MxBankAccount extends BankAccount implements BankAccountInterface
             return null;
         }
 
-        return substr($this->getBankAccountNumber(), 6, 11);
+        return substr($this->getBankAccountNumber(), 7, 10);
     }
 }

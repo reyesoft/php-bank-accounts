@@ -41,7 +41,8 @@ final class MxBankAccountTest extends TestCase
 
     public function testGetInternalBankAccountNumber()
     {
-        static::assertSame('01031285017', (new MxBankAccount('072580010312850172'))->getInternalBankAccountNumber());
+        static::assertSame('1031285017', (new MxBankAccount('072580010312850172'))->getInternalBankAccountNumber());
+        static::assertSame('1507317570', (new MxBankAccount('012694015073175704'))->getInternalBankAccountNumber());
         static::assertNull((new MxBankAccount('123'))->getInternalBankAccountNumber());
     }
 
