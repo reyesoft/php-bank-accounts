@@ -35,12 +35,12 @@ class ArBankAccount extends BankAccount implements BankAccountInterface
 
     private function isAlias(): bool
     {
-        return !preg_match('/^[0-9]+$/', $this->bank_account_number);
+        return preg_match('/^[0-9]+$/', $this->bank_account_number) !== 1;
     }
 
     public function isValid(): bool
     {
-        if (preg_match('/^[0-9]+$/', $this->bank_account_number) && !$this->isValidCbu()) {
+        if (preg_match('/^[0-9]+$/', $this->bank_account_number) === 1 && !$this->isValidCbu()) {
             return false;
         }
 
@@ -50,7 +50,7 @@ class ArBankAccount extends BankAccount implements BankAccountInterface
     /**
      *  alias, http://www.bcra.gob.ar/Pdfs/comytexord/B11478.pdf.
      */
-    public function isValidAlias()
+    public function isValidAlias(): bool
     {
         return preg_match('/^[A-Za-z.\-0-9]{6,22}$/', $this->bank_account_number) === 1;
     }
@@ -58,12 +58,13 @@ class ArBankAccount extends BankAccount implements BankAccountInterface
     /**
      * By Banco Central Argentino (http://www.bcra.gov.ar/pdfs/snp/SNP3002.pdf).
      */
-    public function isValidCbu()
+    public function isValidCbu(): bool
     {
         // only 22 numbers
-        if (!preg_match('/[0-9]{22}/', $this->bank_account_number)) {
+        if (preg_match('/[0-9]{22}/', $this->bank_account_number) !== 1) {
             return false;
         }
+        /** @var array<int> $arr */
         $arr = str_split($this->bank_account_number);
         if ($arr[7] != self::getDigitoVerificador($arr, 0, 6)) {
             // @codeCoverageIgnoreStart
@@ -81,7 +82,7 @@ class ArBankAccount extends BankAccount implements BankAccountInterface
      * Devuelve el dígito verificador para los dígitos de las posiciones "pos_inicial" a "pos_final"
      * de la cadena "$numero" usando clave 10 con ponderador 9713.
      *
-     * @param array $numero arreglo de digitos
+     * @param array<int> $numero arreglo de digitos
      * @param int $pos_inicial
      * @param int $pos_final
      *
