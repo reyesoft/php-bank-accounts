@@ -23,7 +23,7 @@ use PHPUnit\Framework\TestCase;
  */
 final class ArBankAccountTest extends TestCase
 {
-    public function testIsValid()
+    public function testIsValid(): void
     {
         static::assertFalse((new ArBankAccount('111111111'))->isValid());
         static::assertFalse((new ArBankAccount('alias'))->isValid());
@@ -34,7 +34,7 @@ final class ArBankAccountTest extends TestCase
         static::assertTrue((new ArBankAccount('alias.mp'))->isValid());
     }
 
-    public function testBankName()
+    public function testBankName(): void
     {
         static::assertSame('MercadoPago', (new ArBankAccount('alias.mp'))->getBankName());
         static::assertSame('Ualá', (new ArBankAccount('alias.uala'))->getBankName());
@@ -42,7 +42,7 @@ final class ArBankAccountTest extends TestCase
         static::assertNull((new ArBankAccount('0000321188000033530718'))->getBankName());
     }
 
-    public function testGetAccountTitle()
+    public function testGetAccountTitle(): void
     {
         static::assertSame('Alias', (new ArBankAccount('alias.mp'))->getAccountTile());
         static::assertSame('CBU/CVU', (new ArBankAccount('0720321188000033530000'))->getAccountTile());

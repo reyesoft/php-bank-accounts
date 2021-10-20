@@ -3,4 +3,4 @@ includes:
 
 parameters:
     ignoreErrors:
-        - '#Construct empty\(\) is not allowed. Use more strict comparison.#'
+        #- '#Construct empty\(\) is not allowed. Use more strict comparison.#'

@@ -33,9 +33,8 @@ jobs:
 
     - name: CI
       run: composer ci
-# Descomentar BE-162
-#    - name: PHPStan
-#      run: composer phpstan
+    - name: PHPStan
+      run: composer phpstan
 
     - name: Run tests
       run: composer coverage
