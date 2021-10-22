@@ -33,7 +33,7 @@
         }
     },
     "scripts": {
-        "ci": "bash vendor/reyesoft/ci/parallel.bash -s \"composer ci-double-spaces\" \"composer ci-php-cs-fixer\"",
+        "ci": "bash vendor/reyesoft/ci/parallel.bash -s \"composer ci-double-spaces\" \"composer phpstan\" \"composer ci-php-cs-fixer\"",
         "ci-double-spaces": [
             "sh vendor/reyesoft/ci/tools/find-double-spaces.sh src",
             "sh vendor/reyesoft/ci/tools/find-double-spaces.sh tests"
