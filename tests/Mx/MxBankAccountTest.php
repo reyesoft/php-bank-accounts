@@ -20,7 +20,7 @@ use PHPUnit\Framework\TestCase;
  */
 final class MxBankAccountTest extends TestCase
 {
-    public function testIsValid()
+    public function testIsValid(): void
     {
         static::assertTrue((new MxBankAccount('072580010990912720'))->isValid());
         static::assertFalse((new MxBankAccount(''))->isValid());
@@ -30,7 +30,7 @@ final class MxBankAccountTest extends TestCase
         static::assertTrue((new MxBankAccount('072580010312850172'))->isValid());
     }
 
-    public function testBankName()
+    public function testBankName(): void
     {
         static::assertSame('IXE', (new MxBankAccount('032180000118359719'))->getBankName());
         static::assertSame('BANORTE', (new MxBankAccount('072580010312850172'))->getBankName());
@@ -39,14 +39,14 @@ final class MxBankAccountTest extends TestCase
         static::assertNull((new MxBankAccount('00050194697194012294'))->getBankName());
     }
 
-    public function testGetInternalBankAccountNumber()
+    public function testGetInternalBankAccountNumber(): void
     {
         static::assertSame('1031285017', (new MxBankAccount('072580010312850172'))->getInternalBankAccountNumber());
         static::assertSame('1507317570', (new MxBankAccount('012694015073175704'))->getInternalBankAccountNumber());
         static::assertNull((new MxBankAccount('123'))->getInternalBankAccountNumber());
     }
 
-    public function testAccountTile()
+    public function testAccountTile(): void
     {
         static::assertSame('CLABE', (new MxBankAccount('01050194697194012294'))->getAccountTile());
     }

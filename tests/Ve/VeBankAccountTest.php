@@ -20,7 +20,7 @@ use PHPUnit\Framework\TestCase;
  */
 final class VeBankAccountTest extends TestCase
 {
-    public function testIsValid()
+    public function testIsValid(): void
     {
         static::assertFalse((new VeBankAccount(''))->isValid());
         static::assertFalse((new VeBankAccount('111111111'))->isValid());
@@ -33,13 +33,13 @@ final class VeBankAccountTest extends TestCase
         static::assertTrue((new VeBankAccount('01050194651194079423'))->isValid());
     }
 
-    public function testBankName()
+    public function testBankName(): void
     {
         static::assertSame('MERCANTIL', (new VeBankAccount('01050194697194012294'))->getBankName());
         static::assertNull((new VeBankAccount('00050194697194012294'))->getBankName());
     }
 
-    public function testAccountTile()
+    public function testAccountTile(): void
     {
         static::assertSame('Cuenta', (new VeBankAccount('01050194697194012294'))->getAccountTile());
     }

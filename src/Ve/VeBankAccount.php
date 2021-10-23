@@ -33,7 +33,7 @@ class VeBankAccount extends BankAccount implements BankAccountInterface
      */
     public function isValid(): bool
     {
-        if (!preg_match('/^[0-9]{20}$/', $this->bank_account_number)) {
+        if (preg_match('/^[0-9]{20}$/', $this->bank_account_number) !== 1) {
             return false;
         }
 
@@ -50,7 +50,12 @@ class VeBankAccount extends BankAccount implements BankAccountInterface
         return false;
     }
 
-    private static function getDigitoVerificador($entidad, $sucursal, $cuenta)
+    /**
+     * @param string $cuenta
+     * @param string $entidad
+     * @param string $sucursal
+     */
+    private static function getDigitoVerificador($entidad, $sucursal, $cuenta): string
     {
         $d = self::dc($entidad . $sucursal, false);
         $d .= self::dc($sucursal . $cuenta, true);
@@ -58,7 +63,11 @@ class VeBankAccount extends BankAccount implements BankAccountInterface
         return $d;
     }
 
-    private static function dc($numero, $escuenta)
+    /**
+     * @param string $numero
+     * @param bool $escuenta
+     */
+    private static function dc($numero, $escuenta): int
     {
         if ($escuenta) {
             $pesos = [3, 2, 7, 6, 5, 4, 3, 2, 7, 6, 5, 4, 3, 2];
@@ -69,9 +78,9 @@ class VeBankAccount extends BankAccount implements BankAccountInterface
         $s = 0;
         for ($i = 0; $i < strlen($numero); ++$i) {
             $d = $numero[$i];
-            $s += $d * $pesos[$i];
+            $s += intval($d) * $pesos[$i];
         }
-        $resultado = (int) (11 - ($s % 11));
+        $resultado = (11 - ($s % 11));
         if ($resultado == 10) {
             /** @codeCoverageIgnoreStart */
             $resultado = 0;

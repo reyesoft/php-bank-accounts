@@ -23,7 +23,7 @@ use PHPUnit\Framework\TestCase;
  */
 final class CoBankAccountTest extends TestCase
 {
-    public function testIsValid()
+    public function testIsValid(): void
     {
         static::assertFalse((new CoBankAccount('alias'))->isValid());
         static::assertFalse((new CoBankAccount('48841394'))->isValid());
@@ -33,7 +33,7 @@ final class CoBankAccountTest extends TestCase
         static::assertTrue((new CoBankAccount('81681291890'))->isValid());
     }
 
-    public function testGetAccountTitle()
+    public function testGetAccountTitle(): void
     {
         static::assertSame('Cuenta', (new CoBankAccount('488413941268'))->getAccountTile());
     }
