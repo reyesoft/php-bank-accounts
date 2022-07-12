@@ -31,6 +31,7 @@ final class CoBankAccountTest extends TestCase
         static::assertFalse((new CoBankAccount('4884139412681121'))->isValid());
         static::assertTrue((new CoBankAccount('488413941268'))->isValid());
         static::assertTrue((new CoBankAccount('81681291890'))->isValid());
+        static::assertTrue((new CoBankAccount('3506849565'))->isValid());
     }
 
     public function testGetAccountTitle(): void

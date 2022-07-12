@@ -30,7 +30,7 @@ class CoBankAccount extends BankAccount implements BankAccountInterface
 
     public function isValid(): bool
     {
-        if (preg_match('/^[0-9]{11,12}$/', $this->bank_account_number) !== 1) {
+        if (preg_match('/^[0-9]{10,12}$/', $this->bank_account_number) !== 1) {
             return false;
         }
 
