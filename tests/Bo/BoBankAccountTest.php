@@ -27,7 +27,7 @@ final class BoBankAccountTest extends TestCase
         static::assertFalse((new BoBankAccount('AAAAA0000'))->isValid());
         static::assertFalse((new BoBankAccount('01050194651194-079423'))->isValid());
         static::assertFalse((new BoBankAccount('01050194651194079423 More text?'))->isValid());
-        static::assertTrue((new BoBankAccount('1234567891234567891234'))->isValid());
+        static::assertTrue((new BoBankAccount('ASD+1234567891234567891234'))->isValid());
     }
 
     public function testBankName(): void
