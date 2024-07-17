@@ -81,6 +81,6 @@ final class BankNamesRepository
         'IFU' => 'Institución Financiera de Desarrollo FUBODE IFD',
         'IID' => 'Institución Financiera de Desarrollo IDEPRO IFD',
         'IIM' => 'Institución Financiera de Desarrollo IMPRO IFD',
-        'IPM' => 'Institución Financiera de Desarrollo Fundación PRO MUJER IFD'
+        'IPM' => 'Institución Financiera de Desarrollo Fundación PRO MUJER IFD',
     ];
 }

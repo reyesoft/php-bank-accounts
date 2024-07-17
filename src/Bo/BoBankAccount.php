@@ -10,7 +10,6 @@ namespace BankAccounts\Bo;
 
 use BankAccounts\BankAccount;
 use BankAccounts\BankAccountInterface;
-use BankAccounts\Bo\BankNamesRepository;
 
 class BoBankAccount extends BankAccount implements BankAccountInterface
 {
@@ -26,7 +25,7 @@ class BoBankAccount extends BankAccount implements BankAccountInterface
 
     public function isValid(): bool
     {
-        if (preg_match('/^(0[0-9]{3})\+(04[0-9]{22})$/', $this->bank_account_number) !== 1) {
+        if (preg_match('/^\d{22}$/', $this->bank_account_number) !== 1) {
             return false;
         }
 

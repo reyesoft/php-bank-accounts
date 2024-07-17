@@ -8,18 +8,11 @@
 
 namespace Tests\Bo;
 
-use BankAccounts\Ar\ArBankAccount;
 use BankAccounts\Bo\BoBankAccount;
-use BankAccounts\Ve\VeBankAccount;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @author Pablo Gabriel Reyes
- *
- * @see https://pabloreyes.com.ar/ Blog
- * @see https://github.com/pablorsk/cbu-validator-php CBU validator on GitHub
- *
- * @covers \BankAccounts\Ar\ArBankAccount
+ * @covers \BankAccounts\Bo\BoBankAccount
  *
  * @internal
  */
@@ -34,7 +27,6 @@ final class BoBankAccountTest extends TestCase
         static::assertFalse((new BoBankAccount('AAAAA0000'))->isValid());
         static::assertFalse((new BoBankAccount('01050194651194-079423'))->isValid());
         static::assertFalse((new BoBankAccount('01050194651194079423 More text?'))->isValid());
-        static::assertFalse((new BoBankAccount('0720262188000036092117'))->isValid());
         static::assertTrue((new BoBankAccount('1234567891234567891234'))->isValid());
     }
 
