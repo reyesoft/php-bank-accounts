@@ -25,7 +25,7 @@ class BoBankAccount extends BankAccount implements BankAccountInterface
 
     public function isValid(): bool
     {
-        if (preg_match('/^([a-zA-Z]{3})\+([0-9]{22})$/', $this->bank_account_number) !== 1) {
+        if (preg_match('/^([a-zA-Z]{3})\+([0-9]{10,})$/', $this->bank_account_number) !== 1) {
             return false;
         }
 
