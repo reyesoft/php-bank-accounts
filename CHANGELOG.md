@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.5] - 2024-07-24
+
+### Fixed
+- The length of the Bolivian account was changed from 22 to between 10-22 digits.
+
 ## [1.1.4] - 2024-07-17
 
 ### Added
