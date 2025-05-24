@@ -1,23 +1,31 @@
 <?php
-/**
- * Copyright (C) 1997-2020 Reyesoft <info@reyesoft.com>.
- *
- * This file is part of Saldo.com.ar. Saldo.com.ar can not be copied and/or
- * distributed without the express permission of Reyesoft
- */
+
+declare(strict_types=1);
 
 namespace BankAccounts;
 
-/** @codeCoverageIgnore */
+/**
+ * Abstract base class for bank account implementations.
+ * Provides common functionality and enforces the BankAccountInterface.
+ *
+ * @codeCoverageIgnore
+ */
 abstract class BankAccount implements BankAccountInterface
 {
     /**
-     * @var string
+     * Stores the raw bank account number or identifier.
+     *
+     * @var string The bank account number or identifier.
      */
-    protected $bank_account_number = '';
+    protected string $bankAccountNumber = '';
 
+    /**
+     * Gets the raw bank account number or identifier as provided to the constructor.
+     *
+     * @return string The bank account number or identifier.
+     */
     public function getBankAccountNumber(): string
     {
-        return $this->bank_account_number;
+        return $this->bankAccountNumber;
     }
 }

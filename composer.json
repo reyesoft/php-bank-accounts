@@ -18,9 +18,9 @@
         "php": ">=7.4"
     },
     "require-dev": {
-        "reyesoft/ci": "*",
-        "codedungeon/phpunit-result-printer": "0.28.0",
-        "phpunit/phpunit": "9.5.4"
+        "reyesoft/ci": "^1.4.6",
+        "codedungeon/phpunit-result-printer": "^0.31.0",
+        "phpunit/phpunit": "^9.6"
     },
     "autoload": {
         "psr-4": {
@@ -33,18 +33,16 @@
         }
     },
     "scripts": {
-        "ci": "bash vendor/reyesoft/ci/parallel.bash -s \"composer ci-double-spaces\" \"composer phpstan\" \"composer ci-php-cs-fixer\"",
-        "ci-double-spaces": [
-            "sh vendor/reyesoft/ci/tools/find-double-spaces.sh src",
-            "sh vendor/reyesoft/ci/tools/find-double-spaces.sh tests"
-        ],
-        "ci-php-cs-fixer": "sh vendor/reyesoft/ci/php/scripts/php-cs-fixer.sh",
+        "ci": "composer phpstan && composer ci-php-cs-fixer && composer phpmd && composer phpcpd",
+        "ci-php-cs-fixer": "./vendor/bin/php-cs-fixer fix --config=resources/rules/php-cs-fixer.php --dry-run --diff --allow-risky=yes",
         "phpstan": [
             "@phpstan-src",
             "@phpstan-tests"
         ],
         "phpstan-src": "./vendor/bin/phpstan analyse -l 7 -c resources/rules/phpstan.src.neon src",
         "phpstan-tests": "./vendor/bin/phpstan analyse -l 7 -c resources/rules/phpstan.tests.neon tests",
+        "phpmd": "bash resources/ci/php-md.sh",
+        "phpcpd": "bash resources/ci/php-cpd.sh",
         "coverage": [
             "phpdbg -d memory_limit=-1 -qrr ./vendor/bin/phpunit tests/",
             "php ./vendor/reyesoft/ci/tools/coverage-checker.php ./bootstrap/cache/clover.xml 95"

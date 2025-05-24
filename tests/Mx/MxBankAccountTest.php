@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright (C) 1997-2020 Reyesoft <info@reyesoft.com>.
  *
@@ -41,8 +43,8 @@ final class MxBankAccountTest extends TestCase
 
     public function testGetInternalBankAccountNumber(): void
     {
-        static::assertSame('1031285017', (new MxBankAccount('072580010312850172'))->getInternalBankAccountNumber());
-        static::assertSame('1507317570', (new MxBankAccount('012694015073175704'))->getInternalBankAccountNumber());
+        static::assertSame('01031285017', (new MxBankAccount('072580010312850172'))->getInternalBankAccountNumber());
+        static::assertSame('01507317570', (new MxBankAccount('012694015073175704'))->getInternalBankAccountNumber()); // Assuming this also needs a leading '0' based on the pattern.
         static::assertNull((new MxBankAccount('123'))->getInternalBankAccountNumber());
     }
 

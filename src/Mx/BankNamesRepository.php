@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Copyright (C) 1997-2020 Reyesoft <info@reyesoft.com>.
  *
